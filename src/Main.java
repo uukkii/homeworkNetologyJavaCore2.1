@@ -9,15 +9,11 @@ public class Main {
         toSort(newArray);
         newArray = toCutZeros(newArray, countLength);
         toShowArray(newArray);
-
     }
 
     public static int[] toFilterPositive(int[] array) {
-
         for (int i = 0; i < array.length; i++) {
-            if (array[i] > 0) {
-                array[i] = array[i];
-            } else array[i] = 0;
+            array[i] = Math.max(array[i], 0);
         }
         return array;
     }
@@ -32,12 +28,12 @@ public class Main {
     }
 
     public static int[] toSort(int[] array) {
-        for (int i = array.length-1; i > 0; i--) {
+        for (int i = array.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (array[j] > array[j+1]) {
+                if (array[j] > array[j + 1]) {
                     int tmp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = tmp;
+                    array[j] = array[j + 1];
+                    array[j + 1] = tmp;
                 }
             }
         }
@@ -47,28 +43,27 @@ public class Main {
     public static int[] toCutZeros(int[] array, int length) {
         int[] arrayCutted = new int[length];
         int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != 0) {
-                arrayCutted[count++] = array[i];
+        for (int j : array) {
+            if (j != 0) {
+                arrayCutted[count++] = j;
             }
         }
         return arrayCutted;
     }
 
     public static void toShowArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
+        for (int j : array) {
+            System.out.println(j);
         }
     }
 
     public static int toDefineLength(int[] array) {
         int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > 0) {
+        for (int j : array) {
+            if (j > 0) {
                 count++;
             }
         }
         return count;
     }
-
 }
